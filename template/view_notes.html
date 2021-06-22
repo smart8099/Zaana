@@ -1,0 +1,43 @@
+
+{%extends 'base2.html' %}
+
+
+{%block content %}
+
+
+<form method="post"  autocomplete="off" action="{% url 'searcher' %}" >
+    {%csrf_token%} 
+<div class="container d-flex" >
+   
+   <input class="form-control m-3" type="text" name="search" placeholder="Search note by title">
+   <button type="submit" class="btn btn-primary m-3">Search</button>
+   <button type="submit" class="btn btn-primary m-3">Cancel</button>
+</div>
+
+<table class="table table-hover ">
+    <thead class="thead-dark">
+        <tr>
+            
+            <td>Title</td>
+            <td>Note</td>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+         {% for note in Notes %}
+         <tr>
+             <td>{{note.title}}</td>
+             <td>{{note.note}}</td>
+             <td> <button type="button" class="btn btn-primary fas fa-edit" onclick="location.href='{% url 'edit_note' note.id %}' "> Edit</button></td>
+             <td> <button type="button" class="btn btn-primary far fa-trash-alt"  onclick="location.href='{% url 'delete_note' note.id %}' "> Delete</button></button></td>
+             <td> <button type="button" class="btn btn-primary fas fa-download"  onclick="location.href='{% url 'download_note' note.id %}' ">Download</button></td>
+             
+                        
+                        
+             
+         </tr>
+         {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

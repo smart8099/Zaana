@@ -1,0 +1,55 @@
+
+
+{% extends 'base2.html' %}
+
+{% load crispy_forms_tags %}
+{%block content%}
+
+
+
+    
+    <section id="login" class="bg-light py-5">
+        <div class="container my-4">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h4>
+                    
+                    <i class="fas fa-edit"></i> Edit Note</h4>
+                </div>
+                <div class="card-body">
+                    
+                  <form method="POST">
+                   
+                      
+                      
+                    {%csrf_token%}
+                    
+                        <div class="form-group ">
+                            {{ form.title|as_crispy_field }}
+                            {{ form.note|as_crispy_field }}
+                        </div>
+            
+                    <button type="submit" class="btn btn-lg btn-primary"><i class="fas fa-edit"></i>Edit Note</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    
+
+{% endblock%}
+
+    
+
+
+
+
+
+
+
+
